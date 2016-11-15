@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.pyc
+*.dll
+*.xml
+*.exe
+*.config
+*.pdb
+*.manifest
+/bin/Debug
+/obj/Debug
+/packages/
