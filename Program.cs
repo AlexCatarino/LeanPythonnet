@@ -8,18 +8,22 @@ namespace LeanPythonnet
     {
         static void Main(string[] args)
         {
+            IAlgorithm algorithmInstance;
+
             try
             {
                 PythonEngine.Initialize();
-                var scope = PythonEngine.ImportModule("BasicTemplateAlgorithm");
-                var item = scope.GetAttr("BasicTemplateAlgorithm");
+
+                using (Py.GIL())
+                {
+                    dynamic scope = Py.Import("BasicTemplateAlgorithm");
+
+                    dynamic item = scope.BasicTemplateAlgorithm();
+
+                    algorithmInstance = Impromptu.ActLike<IAlgorithm>(item);
+                }
                 
-                dynamic dynamicAlgorithm = item;
-
-                IAlgorithm algorithmInstance = Impromptu.ActLike<IAlgorithm>(dynamicAlgorithm);
-
                 algorithmInstance.Initialize();
-
             }
             catch (Exception e)
             {
