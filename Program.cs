@@ -24,6 +24,8 @@ namespace LeanPythonnet
                 }
                 
                 algorithmInstance.Initialize();
+                algorithmInstance.SetCash(1000000);
+                
             }
             catch (Exception e)
             {

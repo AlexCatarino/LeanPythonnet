@@ -1,14 +1,19 @@
 ﻿from QCAlgorithm import QCAlgorithm
 import numpy as np
+from QuantConnect import *
 
 class BasicTemplateAlgorithm(QCAlgorithm):
 
     def Initialize(self):
-        print 'Initialize method called'
-        self.SetCash(200000)
-        print 'Cash: %d' % self.cash
+        self.SetStartDate(2013, 10, 7)
+        self.SetEndDate(2013, 10, 11)
+        self.SetCash(np.pi * 100000)
 
-        print 'Pi = %f' % np.pi
+        self.AddSecurity(SecurityType.Equity, "SPY")
+        
+        print self.StartDate
+        print self.EndDate
+        print self.Portfolio.Cash
 
     def OnData(self, data):
         pass
